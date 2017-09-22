@@ -4,7 +4,7 @@ Ejemplo de como obtener token de firebase, para las peticiones al API de revisaM
 
 [https://github.com/digaresc/revisamigrieta-api-backend](https://github.com/digaresc/revisamigrieta-api-backend)
 
-```
+```javascript
 // Initialize Firebase
 var config = {
     apiKey: "APIKEY",
