@@ -2,9 +2,10 @@
 
 Ejemplo de como obtener token de firebase, para las peticiones al API de revisaMiGrieta:
 
-(https://github.com/digaresc/revisamigrieta-api-backend)[https://github.com/digaresc/revisamigrieta-api-backend]
+[https://github.com/digaresc/revisamigrieta-api-backend](https://github.com/digaresc/revisamigrieta-api-backend)
 
-```// Initialize Firebase
+```
+// Initialize Firebase
 var config = {
     apiKey: "APIKEY",
     authDomain: "AUTHDOMAIN",
@@ -29,6 +30,7 @@ firebase.auth().currentUser.getToken().then(function(token) {
 
 function submitDataFunction(token){
 	console.log("Authorization");
-	console.log("Bearer " + tolken);
+	console.log("Bearer " + token);
 	console.log(BASE_URL);
-}```
+}
+```
