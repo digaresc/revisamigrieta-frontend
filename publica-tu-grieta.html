@@ -20,7 +20,7 @@
     <!-- Custom styles for this template -->
     <link href="css/grietas.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
-
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -83,10 +83,100 @@
                         <pre><code id="quickstart-oauthsecret">null</code></pre>
                     </div>
                 </div>
-
-
             </div>
             <!-- /.row -->
+
+
+                <form id="contact-form" method="post" action="contact.php" role="form">
+
+                    <div class="messages"></div>
+
+                    <div class="controls">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_name">¿Donde estas ubicado?</label>
+                                    <span>MAPA</span>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_lastname">Tipo de grieta</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_email">¿Interno o externo?</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_phone">¿Consideras que hay mas de 20% de grietas en la construcción?</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_email">¿Existen hundimientos, desplomes, golpeteo con edificios, desprendimiento de recubrimiento, vibraciones de losas o sistemas de pisos huecos?</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_phone">¿Las grietas forman una diagonal con la horizontal del piso?</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_email">¿Las grietas son paralelas al piso?</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_phone">¿Si es una losa, las grietas van diagonales desde la esquina hasta el centro?</label>
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="success" data-offstyle="danger">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form_message">Mensaje extra *</label>
+                                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Deja tu mensaje."></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-success btn-send" value="Send message">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-muted"><strong>*</strong> Terminos y condiciones.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
 
         </div>
         <!-- /.col-lg-9 -->
@@ -110,10 +200,12 @@
 <script src="vendor/popper/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
-<script src="js/firebase.js"></script>
+<script src="js/constants.js"></script>
+<script src="js/publica-tu-grieta.js"></script>
 <script src="js/init.js"></script>
 
 </body>
