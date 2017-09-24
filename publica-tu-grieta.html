@@ -28,7 +28,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Revisa Mi Grieta</a>
+        <a class="navbar-brand" href="index.html">Revisa Mi Grieta</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,15 +36,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Listado Grietas</a>
+                    <a class="nav-link" href="index.html">Listado Grietas</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Publica tu Grieta
+                    <a class="nav-link" href="publica-tu-grieta.html">Publica tu Grieta
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Revisa Grietas</a>
+                    <a class="nav-link" href="admin.html">Revisa Grietas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="acerca.html">Acerca</a>
@@ -111,7 +111,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <form method="POST" onsubmit="event.preventDefault(); postGrietaNueva();">
+                            <form method="POST" onsubmit="event.preventDefault(); postGrietaNueva();" name="grietaForm">
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="geolocalizacion">
                                         &iquest;Donde estas ubicado?
@@ -135,13 +135,13 @@
                                     <div class="">
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="tipo" type="radio" value="LOSA"/>
+                                                <input name="tipo" type="radio" value="0"/>
                                                 LOSA
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="tipo" type="radio" value="PARED"/>
+                                                <input name="tipo" type="radio" value="1"/>
                                                 PARED
                                             </label>
                                         </div>
@@ -156,13 +156,13 @@
                                     <div class="">
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="ubicacion" type="radio" value="INTERNA"/>
+                                                <input name="ubicacion" type="radio" value="0"/>
                                                 INTERNA
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="ubicacion" type="radio" value="EXTERNA"/>
+                                                <input name="ubicacion" type="radio" value="1"/>
                                                 EXTERNA
                                             </label>
                                         </div>
@@ -199,38 +199,38 @@
                                     <div class=" ">
                                         <div class="checkbox">
                                             <label class="checkbox">
-                                                <input name="checkbox" type="checkbox" value="Hundimientos"/>
+                                                <input name="hundimiento" type="checkbox" value="Hundimientos"/>
                                                 Hundimientos
                                             </label>
                                         </div>
                                         <div class="checkbox">
                                             <label class="checkbox">
-                                                <input name="checkbox" type="checkbox" value="Desplomes"/>
+                                                <input name="desplomes" type="checkbox" value="Desplomes"/>
                                                 Desplomes
                                             </label>
                                         </div>
                                         <div class="checkbox">
                                             <label class="checkbox">
-                                                <input name="checkbox" type="checkbox" value="Golpeteo con edificios"/>
+                                                <input name="golpeteo" type="checkbox" value="Golpeteo con edificios"/>
                                                 Golpeteo con edificios
                                             </label>
                                         </div>
                                         <div class="checkbox">
                                             <label class="checkbox">
-                                                <input name="checkbox" type="checkbox"
+                                                <input name="desprendimiento" type="checkbox"
                                                        value="Desprendimiento de recubrimiento"/>
                                                 Desprendimiento de recubrimiento
                                             </label>
                                         </div>
                                         <div class="checkbox">
                                             <label class="checkbox">
-                                                <input name="checkbox" type="checkbox" value="Vibraciones de losas"/>
+                                                <input name="vibraciones" type="checkbox" value="Vibraciones de losas"/>
                                                 Vibraciones de losas
                                             </label>
                                         </div>
                                         <div class="checkbox">
                                             <label class="checkbox">
-                                                <input name="checkbox" type="checkbox"
+                                                <input name="pisosHuecos" type="checkbox"
                                                        value="Sistemas de pisos huecos"/>
                                                 Sistemas de pisos huecos
                                             </label>
@@ -246,13 +246,13 @@
                                     <div class="">
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="diagonalPiso" type="radio" value="SI"/>
+                                                <input name="diagonales" type="radio" value="SI"/>
                                                 SI
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="diagonalPiso" type="radio" value="NO"/>
+                                                <input name="diagonales" type="radio" value="NO"/>
                                                 NO
                                             </label>
                                         </div>
@@ -266,13 +266,13 @@
                                     <div class="">
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="radio4" type="radio" value="SI"/>
+                                                <input name="paralelas" type="radio" value="SI"/>
                                                 SI
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="radio4" type="radio" value="NO"/>
+                                                <input name="paralelas" type="radio" value="NO"/>
                                                 NO
                                             </label>
                                         </div>
@@ -287,23 +287,23 @@
                                     <div class="">
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="radio5" type="radio" value="SI"/>
+                                                <input name="diagonalesLosa" type="radio" value="SI"/>
                                                 SI
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label class="radio">
-                                                <input name="radio5" type="radio" value="NO"/>
+                                                <input name="diagonalesLosa" type="radio" value="NO"/>
                                                 NO
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label class="control-label " for="mensaje">
+                                    <label class="control-label " for="comentario">
                                         Comentario adicional
                                     </label>
-                                    <textarea class="form-control" cols="40" id="mensaje" name="mensaje"
+                                    <textarea class="form-control" cols="40" id="comentario" name="mensaje"
                                               placeholder="Comentario" rows="10"></textarea>
                                     <span class="help-block" id="hint_mensaje">Instrucciones</span>
                                 </div>
@@ -348,7 +348,7 @@
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
 
-<script defer src="revisamigrieta-api-client/src/ApiClient.js"></script>
+
 <script src="js/constants.js"></script>
 <script src="js/publica-tu-grieta.js"></script>
 <script src="js/init.js"></script>

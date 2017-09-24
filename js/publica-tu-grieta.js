@@ -8,41 +8,43 @@ var callback = function (error, data, response) {
 
 function postAppData(token) {
 
-    var mas20porciento = document.getElementById('mas20porciento').value;
+    var mas20porciento =  document.grietaForm.ubicacion.value === "SI"  ? true : false;
     var comentario = document.getElementById('comentario').value;
-    var desplomes = document.getElementById('desplomes').value;
-    var desprendimiento = document.getElementById('desprendimiento').value;
-    var golpeteo = document.getElementById('golpeteo').value;
-    var hundimiento = document.getElementById('hundimiento').value;
+    var desplomes =  document.grietaForm.desplomes.value === "SI"  ? true : false;;
+    var desprendimiento =  document.grietaForm.desprendimiento.value === "SI"  ? true : false;;
+    var golpeteo =  document.grietaForm.golpeteo.value === "SI"  ? true : false;;
+    var hundimiento =  document.grietaForm.hundimiento.value === "SI"  ? true : false;;
 
-    var pisosHuecos = document.getElementById('pisosHuecos').value;
-    var vibraciones = document.getElementById('vibraciones').value;
-    var latitude = document.getElementById('latitude').value;
+    var pisosHuecos =  document.grietaForm.pisosHuecos.value === "SI"  ? true : false;;
+    var vibraciones =  document.grietaForm.vibraciones.value === "SI"  ? true : false;;
+    var latitude = 32.1;
+    var longitude = 2.3;
 
-    var diagonales = document.getElementById('diagonales').value;
-    var paralelas = document.getElementById('paralelas').value;
-    var tipo = document.getElementById('tipo').value;
-    var ubicacion = document.getElementById('ubicacion').value;
+
+    var diagonales = document.grietaForm.diagonales.value === "SI"  ? true : false;;
+    var paralelas = document.grietaForm.paralelas.value === "SI"  ? true : false;;
+    var tipo = document.grietaForm.tipo.value === "SI"  ? 1 : 0;;
+    var ubicacion = document.grietaForm.ubicacion.value === "SI"  ? 1 : 0;;
 
     var grieta = {
         "mas20porciento": mas20porciento,
-        "comentario": "Hola",
-        "desplomes": true,
-        "desprendimiento": true,
-        "golpeteo": true,
-        "hundimiento": true,
-        "pisosHuecos": true,
-        "vibraciones": true,
-        "latitude": 3.4,
-        "longitude": 3.4,
-        "diagonales": true,
-        "paralelas": true,
-        "tipo": 0,
-        "ubicacion": 0
+        "comentario": "comentario",
+        "desplomes": desplomes,
+        "desprendimiento": desprendimiento,
+        "golpeteo": golpeteo,
+        "hundimiento": hundimiento,
+        "pisosHuecos": pisosHuecos,
+        "vibraciones": vibraciones,
+        "latitude": latitude,
+        "longitude": longitude,
+        "diagonales": diagonales,
+        "paralelas": paralelas,
+        "tipo": tipo,
+        "ubicacion": ubicacion
     };
+    console.log(grieta);
 
     var data = JSON.stringify(grieta);
-
 
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -54,9 +56,9 @@ function postAppData(token) {
 
         if (this.readyState === 4) {
             console.log(this.status)
-            if(this.status === 204){
+            if (this.status === 204) {
                 console.log("success");
-            } else{
+            } else {
                 console.log("fail");
             }
 
