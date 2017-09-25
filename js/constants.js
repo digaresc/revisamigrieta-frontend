@@ -7,6 +7,6 @@ const config = {
     messagingSenderId: "427953002306"
 };
 
-const BASE_URL = "https://revisamigrieta.appspot.com/_ah/api";
+const BASE_URL = "https://revisamigrieta.appspot.com/_ah/api/v1";
 
 firebase.initializeApp(config);
