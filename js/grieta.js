@@ -20,7 +20,7 @@ function loadGrietas(grietaId) {
         }
     });
 
-    xhr.open("GET", BASE_URL + "/grietas/" + grietaId + "/revisiones");
+    xhr.open("GET", BASE_URL + "/grietas/" + grietaId );
     xhr.setRequestHeader("content-type", "application/json");
     xhr.setRequestHeader("cache-control", "no-cache");
 
@@ -29,35 +29,44 @@ function loadGrietas(grietaId) {
 
 }
 
-function grietasJsonToHTML(json){
+function grietasJsonToHTML(json) {
     console.log(JSON.stringify(json));
 
-for( var i=0; i < json['items'].length; i++ ){
+    for (var i = 0; i < json['files'].length; i++) {
+        var imagenGrietaThumb = json['files'][i].split(".")[0] + "-thumb.JPG";
+        var activeSlide = i == 0 ? "active": "";
         var strVar = "";
-        strVar += "<div class=\"col-lg-4 col-md-6 mb-4\">";
-        strVar += "                    <div class=\"card h-100\">";
-        strVar += "                        <a href=\"#\"><img class=\"card-img-top\" src=\"http:\/\/placehold.it\/700x400\" alt=\"\"><\/a>";
-        strVar += "                        <div class=\"card-body\">";
-        strVar += "                            <h4 class=\"card-title\">";
-        strVar += "                                <a href=\"grieta.html?id=" + json['items'][i].id +" \"> " + json['items'][i].tipo +"<\/a>";
-        strVar += "                            <\/h4>";
-        strVar += "                            <h5>"  + json['items'][i].ubicacion + "<\/h5>";
-        strVar += "                            <p class=\"card-text\">" + json['items'][i].comentario;
-        strVar += "                                <\/p>";
+        strVar += "<div class=\"carousel-item "+ activeSlide +"\">";
+        strVar += "                            <img class=\"d-block img-fluid\" src=\"https:\/\/storage.googleapis.com\/revisamigrieta-images\/" +  imagenGrietaThumb + "\" alt=\"First slide\">";
         strVar += "                        <\/div>";
-        strVar += "                        <div class=\"card-footer\">";
-        strVar += "                            <span>Peligro<\/span>";
-        strVar += "                            <small class=\"text-muted\">&#9733; &#9733; &#9733; &#9733; &#9734;<\/small>";
-        strVar += "                        <\/div>";
-        strVar += "                    <\/div>";
-        strVar += "                <\/div>";
 
-        document.getElementById('grietas-listado').innerHTML = document.getElementById('grietas-listado').innerHTML + strVar;
+        document.getElementById('carousel-item').innerHTML = document.getElementById('carousel-item').innerHTML + strVar;
     }
 
 
+}
+
+
+function grietasRevisionesJsonToHTML(json) {
+    console.log(JSON.stringify(json));
+
+    for (var i = 0; i < json['items'].length; i++) {
+        var comentarios = json['items'][i].comentarios;
+
+
+        var strVar="";
+        strVar += "<p>" + comentarios + "<\/p>";
+        strVar += "                    <small class=\"text-muted\">Revisión por: Anonymous el 3\/1\/17<\/small>";
+        strVar += "                    <hr>";
+
+
+        document.getElementById('lista-revisiones').innerHTML = document.getElementById('lista-revisiones').innerHTML + strVar;
+    }
+
 
 }
+
+
 function getAllUrlParams(url) {
     var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
     var obj = {};
@@ -98,9 +107,41 @@ function getAllUrlParams(url) {
 }
 
 
+function loadRevisionesGrietas(grietaId) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            var d = JSON.parse(this.responseText);
+            if (this.status === 404 && d.error.message === "Required user profile is missing.") {
+                $("#con-close-modal").modal();
+            } else {
+                if (Object.getOwnPropertyNames(d).length > 0) {
+                    console.log(d);
+                    grietasRevisionesJsonToHTML(d);
+
+                }
+
+            }
+
+        }
+    });
+
+    xhr.open("GET", BASE_URL + "/grietas/" + grietaId  + "/revisiones");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+
+    xhr.send();
+
+
+}
+
 
 
 window.onload = function () {
     var grietaId = decodeURIComponent(getAllUrlParams().id);
     loadGrietas(grietaId);
+    loadRevisionesGrietas(grietaId);
 }

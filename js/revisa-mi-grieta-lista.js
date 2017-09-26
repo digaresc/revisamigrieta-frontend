@@ -20,7 +20,7 @@ function loadGrietas() {
         }
     });
 
-    xhr.open("GET", BASE_URL + "/grietas");
+    xhr.open("GET", BASE_URL + "/grietas/pendientes");
     xhr.setRequestHeader("content-type", "application/json");
     xhr.setRequestHeader("cache-control", "no-cache");
 
@@ -35,8 +35,8 @@ function grietasJsonToHTML(json){
 for( var i=0; i < json['items'].length; i++ ){
     var imagenGrietaThumb = json['items'][i].files[0].split(".")[0] + "-thumb.JPG";
         var strVar = "";
-        strVar += "<div class=\"col-lg-4 col-md-6 mb-4\">";
-        strVar += "                    <div class=\"card h-100\">";
+        strVar += "<div class=\"col-lg-12 col-md-12 mb-12\">";
+        strVar += "                    <div class=\"card h-100\" data-id=\""+ json['items'][i].id +"\" >";
         strVar += "                        <a href=\"#\"><img class=\"card-img-top\" src=\"https:\/\/storage.googleapis.com\/revisamigrieta-images\/" + imagenGrietaThumb +"\" alt=\"\"><\/a>";
         strVar += "                        <div class=\"card-body\">";
         strVar += "                            <h4 class=\"card-title\">";
@@ -53,7 +53,7 @@ for( var i=0; i < json['items'].length; i++ ){
         strVar += "                    <\/div>";
         strVar += "                <\/div>";
 
-        document.getElementById('grietas-listado').innerHTML = document.getElementById('grietas-listado').innerHTML + strVar;
+        document.getElementById('revisa-grietas-listado').innerHTML = document.getElementById('revisa-grietas-listado').innerHTML + strVar;
     }
 
 
@@ -61,5 +61,6 @@ for( var i=0; i < json['items'].length; i++ ){
 }
 
 window.onload = function () {
+    initApp();
     loadGrietas();
 }

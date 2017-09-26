@@ -54,8 +54,8 @@
 
 <header class="bg-primary text-white">
     <div class="container text-center">
-        <h1>Revisa Mi Grieta API</h1>
-        <p class="lead">Información tecnica para desarrolladores</p>
+        <h1>Revisa Mi Grieta</h1>
+        <p class="lead">Apoya revisando grietas</p>
     </div>
 </header>
 
@@ -64,39 +64,26 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2>Acerca</h2>
-                <p class="lead">API Endpoints</p>
-                <ul>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+                <p class="lead">Formulario de registro</p>
+                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                    <p>Loggeate con TWitter.</p>
 
-<section id="services" class="bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2>DB Exports</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
-            </div>
-        </div>
-    </div>
-</section>
+                    <!-- Button that handles sign-in/sign-out -->
+                    <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in
+                        with Twitter
+                    </button>
 
-<section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2>Terminos de API</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+                    <!-- Container where we'll display the user details -->
+                    <div class="quickstart-user-details-container">
+                        Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+                        <div>Firebase auth <code>currentUser</code> object value:</div>
+                        <pre><code id="quickstart-account-details">null</code></pre>
+                        <div>Twitter OAuth Token:</div>
+                        <pre><code id="quickstart-oauthtoken">null</code></pre>
+                        <div>Twitter OAuth Secret:</div>
+                        <pre><code id="quickstart-oauthsecret">null</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -117,7 +104,13 @@
 
 <!-- Plugin JavaScript -->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
 
+
+<script src="js/constants.js"></script>
+<script src="js/init.js"></script>
 <!-- Custom JavaScript for this theme -->
 <script src="js/scrolling-nav.js"></script>
 
