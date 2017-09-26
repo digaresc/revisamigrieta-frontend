@@ -33,10 +33,11 @@ function grietasJsonToHTML(json){
     console.log(JSON.stringify(json));
 
 for( var i=0; i < json['items'].length; i++ ){
+    var imagenGrietaThumb = json['items'][i].files[0].split(".")[0] + "-thumb.jpg"
         var strVar = "";
         strVar += "<div class=\"col-lg-4 col-md-6 mb-4\">";
         strVar += "                    <div class=\"card h-100\">";
-        strVar += "                        <a href=\"#\"><img class=\"card-img-top\" src=\"http:\/\/placehold.it\/700x400\" alt=\"\"><\/a>";
+        strVar += "                        <a href=\"#\"><img class=\"card-img-top\" src=\"https:\/\/storage.googleapis.com\/revisamigrieta-images\/" + imagenGrietaThumb +"\" alt=\"\"><\/a>";
         strVar += "                        <div class=\"card-body\">";
         strVar += "                            <h4 class=\"card-title\">";
         strVar += "                                <a href=\"grieta.html?id=" + json['items'][i].id +" \"> " + json['items'][i].tipo +"<\/a>";
