@@ -12,13 +12,18 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- Libs -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/acerca.css" rel="stylesheet">
+    <link href="css/grietas.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
 </head>
 
-<body id="page-top">
+<body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -33,13 +38,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Listado Grietas</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="publica-tu-grieta.html">Publica tu Grieta
+                        <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="revisa-mi-grieta.html">Revisa Grietas</a>
-                    <span class="sr-only">(current)</span>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="revisa-mi-grieta-api.html">API Endpoints</a>
@@ -52,55 +57,182 @@
     </div>
 </nav>
 
-<header class="bg-primary text-white">
-    <div class="container text-center">
-        <h1>Revisa Mi Grieta API</h1>
-        <p class="lead">Información tecnica para desarrolladores</p>
-    </div>
-</header>
+<!-- Page Content -->
+<div class="container">
 
-<section id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2>Acerca</h2>
-                <p class="lead">API Endpoints</p>
-                <ul>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                    <li>http://api1.com/info</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+    <div class="row">
 
-<section id="services" class="bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2>DB Exports</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="col-lg-12">
 
-<section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2>Terminos de API</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+            <h2> Grietas </h2>
+            <div class="row">
+                <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+                    <h2 class="mdl-card__title-text">Ejemplo de login con Twitter</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                    <p>Loggeate con TWitter.</p>
+
+                    <!-- Button that handles sign-in/sign-out -->
+                    <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in
+                        with Twitter
+                    </button>
+
+                    <!-- Container where we'll display the user details -->
+                    <div class="quickstart-user-details-container">
+                        Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+                        <div>Firebase auth <code>currentUser</code> object value:</div>
+                        <pre><code id="quickstart-account-details">null</code></pre>
+                        <div>Twitter OAuth Token:</div>
+                        <pre><code id="quickstart-oauthtoken">null</code></pre>
+                        <div>Twitter OAuth Secret:</div>
+                        <pre><code id="quickstart-oauthsecret">null</code></pre>
+                    </div>
+                </div>
             </div>
+            <!-- /.row -->
+
+
+            <!--Font Awesome (added because you use icons in your prepend/append)-->
+            <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
+
+            <!-- Inline CSS based on choices in "Settings" tab -->
+            <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
+                font-family: Arial, Helvetica, sans-serif;
+                color: black
+            }
+
+            .bootstrap-iso form button, .bootstrap-iso form button:hover {
+                color: white !important;
+            }
+
+            .asteriskField {
+                color: red;
+            }</style>
+
+            <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+            <h2> Grietas </h2>
+            <div class="row" id="revisa-grietas-listado">
+
+
+            </div>
+            <div class="bootstrap-iso">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <form method="POST" onsubmit="event.preventDefault(); postRevisionNueva();" name="grietaForm">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField">
+                                        &iquest;Peligro inminente?
+                                        <span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="">
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="peligroInminente" type="radio" value="SI"/>
+                                                SI
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="peligroInminente" type="radio" value="NO"/>
+                                                NO
+                                            </label>
+                                        </div>
+                                        <span class="help-block" id="hint_peligroInminente">Instrucciones</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="control-label requiredField">
+                                        &iquest;Las grietas forman una diagonal con la horizontal del piso?
+                                        <span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="">
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="diagonales" type="radio" value="SI"/>
+                                                SI
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="diagonales" type="radio" value="NO"/>
+                                                NO
+                                            </label>
+                                        </div>
+                                        <span class="help-block" id="hint_diagonalPiso">Instrucciones</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="control-label ">
+                                        &iquest;Las grietas son paralelas al piso?
+                                    </label>
+                                    <div class="">
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="paralelas" type="radio" value="SI"/>
+                                                SI
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="paralelas" type="radio" value="NO"/>
+                                                NO
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label requiredField">
+                                        &iquest;Si es una losa, las grietas van diagonales desde la esquina hasta el
+                                        centro?
+                                        <span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="">
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="diagonalesLosa" type="radio" value="SI"/>
+                                                SI
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label class="radio">
+                                                <input name="diagonalesLosa" type="radio" value="NO"/>
+                                                NO
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label " for="comentario">
+                                        Comentario adicional
+                                    </label>
+                                    <textarea class="form-control" cols="40" id="comentario" name="mensaje"
+                                              placeholder="Comentario" rows="10"></textarea>
+                                    <span class="help-block" id="hint_mensaje">Instrucciones</span>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <button class="btn btn-primary " name="submit" type="submit" >
+                                            Publicar Revision
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <!-- /.col-lg-9 -->
+
     </div>
-</section>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
 
 <!-- Footer -->
 <footer class="py-5 bg-dark">
@@ -109,17 +241,22 @@
     </div>
     <!-- /.container -->
 </footer>
-
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
 
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom JavaScript for this theme -->
-<script src="js/scrolling-nav.js"></script>
+
+<script src="js/constants.js"></script>
+<script src="js/init.js"></script>
+<script src="js/revisa-mi-grieta-lista.js"></script>
+<script src="js/revisa-mi-grieta.js"></script>
+
 
 </body>
 
