@@ -1,0 +1,23 @@
+{
+  "name": "revisamigrieta-frontend",
+  "version": "1.0.0",
+  "description": "Revisa mi grieta frontend",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digaresc/revisamigrieta-frontend"
+  },
+  "author": "Diego García",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/digaresc/revisamigrieta-frontend/issues"
+  },
+  "homepage": "https://github.com/digaresc/revisamigrieta-frontend",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-utils-pagination": "^0.11.1"
+  }
+}
