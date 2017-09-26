@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="revisaMiGrieta">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Revisa Mi Grieta </title>
+
+    <!-- Bootstrap core CSS -->
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script data-require="bootstrap@3.1.1" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/revisaMiGrieta.css" rel="stylesheet">    
+</head>
+
+<body>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div ng-controller="Grietas" class="my-controller">
+        <h1>Grietas</h1>
+        <div class="row">
+          <div class="col-xs-4">
+            <h3>Página: {{ currentPage }}</h3>
+          </div>
+          <div class="col-xs-4">
+            <label for="search">Buscar:</label>
+            <input ng-model="q" id="search" class="form-control" placeholder="Filtro por texto">
+          </div>
+          <div class="col-xs-4">
+            <label for="search">grietas por página:</label>
+            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+          </div>
+        </div>
+        <br>
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <ul>
+              <li dir-paginate="grieta in grietas | filter:q | itemsPerPage: pageSize" current-page="currentPage">{{ grieta }}</li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div ng-controller="Pagination" class="other-controller">
+        <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="node_modules/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript -->
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-utils-pagination/dirPagination.js"></script>
+<script src="js/constants.js"></script>
+<script src="js/grietas/grietas.js"></script>
+<script src="js/grietas/pagination.js"></script>
+<script src="js/app.js"></script>
+</body>
+
+</html>
